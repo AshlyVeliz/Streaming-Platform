@@ -2,7 +2,7 @@
 
 ## Integrantes
 * Ashly Veliz
-* 
+* Darlene Escobar Hinojosa
 * 
 ---
 ## Plataforma de Streaming
