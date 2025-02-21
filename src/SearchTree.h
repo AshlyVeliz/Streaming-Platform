@@ -1,0 +1,11 @@
+// Created by Ashly Veliz on 20/02/25.
+#ifndef STREAMING_PLATFORM_SEARCHTREE_H
+#define STREAMING_PLATFORM_SEARCHTREE_H
+
+
+class SearchTree {
+
+};
+
+
+#endif //STREAMING_PLATFORM_SEARCHTREE_H

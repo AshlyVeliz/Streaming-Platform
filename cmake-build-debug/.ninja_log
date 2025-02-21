@@ -1,0 +1,8 @@
+# ninja log v6
+638	780	1740096938721167366	Streaming_Platform	1ffb4d5485612693
+5	638	1740096938088868947	CMakeFiles/Streaming_Platform.dir/src/main.cpp.o	fdb768451bd5123b
+5	1073	1740096608417021031	CMakeFiles/Streaming_Platform.dir/src/DataProcessor.cpp.o	bf70fbc0b8899a32
+10	222	1740092778564756487	CMakeFiles/Streaming_Platform.dir/src/SearchTree.cpp.o	d7312b57b476e67e
+7	80	1740101480604740790	build.ninja	1ebd18de7ab5d6e7
+4	732	1740101480619239196	CMakeFiles/Streaming_Platform.dir/src/main.cpp.o	fdb768451bd5123b
+732	918	1740101481347836819	Streaming_Platform	d8db30d1abd9960d
