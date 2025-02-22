@@ -1,9 +1,9 @@
 #include <iostream>
 #include "DataProcessor.h"
-
+#include "TagTree.h"
 
 int main() {
-    string rutaCSV = "/Users/ashlyveliz/Documents/PROYECTOS/Streaming-Platform/data/movies.csv";  //cambiar a su ruta
+    string rutaCSV = "/Users/ashlyveliz/Documents/PROYECTOS/Streaming-Platform/data/movies.csv";
     vector<Pelicula> peliculas = DataProcessor::cargarPeliculasDesdeCSV(rutaCSV);
 
     if (peliculas.empty()) {
@@ -11,16 +11,39 @@ int main() {
         return 1;
     }
 
-    // Mostrar las primeras 5 películas cargadas
-    cout << "📽️ Películas cargadas desde CSV: " << endl;
-    for (size_t i = 0; i < min(peliculas.size(), size_t(5)); ++i) {
-        cout << "\n🎬 Título: " << peliculas[i].titulo << endl;
-        cout << "📖 Sinopsis: " << peliculas[i].sinopsis << endl;
-        cout << "🏷️ Tags: ";
-        for (const auto& tag : peliculas[i].tags) {
-            cout << "#" << tag << " ";
+    TagTree tagTree;
+
+    // Insertar las películas en el árbol de tags
+    for (const auto& pelicula : peliculas) {
+        for (const auto& tag : pelicula.tags) {
+            tagTree.insertar(tag, pelicula);
         }
-        cout << endl;
     }
 
+    // Mostrar los tags almacenados (opcional)
+    cout << "\n📌 Tags en el árbol de búsqueda: " << endl;
+    tagTree.imprimirTags();
+
+    // 🔍 Búsqueda por tag
+    while (true) {
+        string tagBuscado;
+        cout << "\n🔍 Ingrese un tag para buscar películas (o 'salir' para terminar): ";
+        cin >> tagBuscado;
+
+        if (tagBuscado == "salir") break;
+
+        vector<Pelicula> resultados = tagTree.buscarPeliculasPorTag(tagBuscado);
+
+        if (resultados.empty()) {
+            cout << "❌ No se encontraron películas con el tag #" << tagBuscado << endl;
+        } else {
+            cout << "\n🎥 Películas con el tag #" << tagBuscado << ":" << endl;
+            for (size_t i = 0; i < min(resultados.size(), size_t(5)); ++i) {
+                cout << "\n🎬 Título: " << resultados[i].titulo << endl;
+                cout << "📖 Sinopsis: " << resultados[i].sinopsis << endl;
+            }
+        }
+    }
+
+    return 0;
 }
