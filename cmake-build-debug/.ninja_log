@@ -1,8 +1,21 @@
 # ninja log v6
-638	780	1740096938721167366	Streaming_Platform	1ffb4d5485612693
-5	638	1740096938088868947	CMakeFiles/Streaming_Platform.dir/src/main.cpp.o	fdb768451bd5123b
+732	918	1740101481347836819	Streaming_Platform	d8db30d1abd9960d
+4	732	1740101480619239196	CMakeFiles/Streaming_Platform.dir/src/main.cpp.o	fdb768451bd5123b
 5	1073	1740096608417021031	CMakeFiles/Streaming_Platform.dir/src/DataProcessor.cpp.o	bf70fbc0b8899a32
 10	222	1740092778564756487	CMakeFiles/Streaming_Platform.dir/src/SearchTree.cpp.o	d7312b57b476e67e
-7	80	1740101480604740790	build.ninja	1ebd18de7ab5d6e7
-4	732	1740101480619239196	CMakeFiles/Streaming_Platform.dir/src/main.cpp.o	fdb768451bd5123b
-732	918	1740101481347836819	Streaming_Platform	d8db30d1abd9960d
+7	80	1740183233653258800	build.ninja	1ebd18de7ab5d6e7
+5	92	1740183609476644562	CMakeFiles/Streaming_Platform.dir/src/SearchTree.cpp.o	d7312b57b476e67e
+5	571	1740183609476270110	CMakeFiles/Streaming_Platform.dir/src/main.cpp.o	fdb768451bd5123b
+5	612	1740183609476841850	CMakeFiles/Streaming_Platform.dir/src/DataProcessor.cpp.o	bf70fbc0b8899a32
+612	788	1740183610084155537	Streaming_Platform	620a07d01663e8a7
+5	491	1740184546771143289	CMakeFiles/Streaming_Platform.dir/src/main.cpp.o	fdb768451bd5123b
+6	545	1740184546771752855	CMakeFiles/Streaming_Platform.dir/src/DataProcessor.cpp.o	bf70fbc0b8899a32
+545	601	1740184547311129244	Streaming_Platform	620a07d01663e8a7
+4	553	1740184586769435408	CMakeFiles/Streaming_Platform.dir/src/main.cpp.o	fdb768451bd5123b
+553	610	1740184587318435433	Streaming_Platform	620a07d01663e8a7
+6	749	1740185309573794634	CMakeFiles/Streaming_Platform.dir/src/main.cpp.o	fdb768451bd5123b
+7	790	1740185309574788897	CMakeFiles/Streaming_Platform.dir/src/DataProcessor.cpp.o	bf70fbc0b8899a32
+790	923	1740185310357805077	Streaming_Platform	620a07d01663e8a7
+6	563	1740185544597037753	CMakeFiles/Streaming_Platform.dir/src/main.cpp.o	fdb768451bd5123b
+7	617	1740185544597997767	CMakeFiles/Streaming_Platform.dir/src/DataProcessor.cpp.o	bf70fbc0b8899a32
+618	673	1740185545208571691	Streaming_Platform	620a07d01663e8a7
