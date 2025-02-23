@@ -1,45 +1,90 @@
 #include "DataProcessor.h"
 
-vector<Pelicula> DataProcessor::cargarPeliculasDesdeCSV(const string& rutaArchivo) {
+vector<Pelicula> DataProcessor::cargarPeliculasDesdeJSON(const string& rutaJSON) {
     vector<Pelicula> peliculas;
-    ifstream archivo(rutaArchivo);
+    ifstream jsonFile(rutaJSON);
 
+    if (!jsonFile.is_open()) {
+        cerr << "❌ Error: No se pudo abrir el archivo JSON " << rutaJSON << endl;
+        return peliculas;
+    }
+
+    json jsonPeliculas;
+    jsonFile >> jsonPeliculas;
+    jsonFile.close();
+
+    for (const auto& item : jsonPeliculas["peliculas"]) {
+        peliculas.emplace_back(
+                item["titulo"].get<string>(),
+                item["sinopsis"].get<string>(),
+                item["tags"].get<vector<string>>()
+        );
+    }
+
+    cout << "✔ Películas cargadas desde JSON en vector: " << peliculas.size() << endl;
+    return peliculas;
+}
+
+vector<Pelicula> DataProcessor::cargarPeliculasDesdeCSV(const string& rutaCSV, const string& rutaJSON) {
+    vector<Pelicula> peliculas;
+
+    // Verificar si el JSON ya existe
+    ifstream jsonFile(rutaJSON);
+    if (jsonFile.good()) {
+        cout << "✔ Archivo JSON ya existe. Cargando datos desde JSON.\n";
+        return cargarPeliculasDesdeJSON(rutaJSON);
+    }
+
+    ifstream archivo(rutaCSV);
     if (!archivo.is_open()) {
-        cerr << "Error: No se pudo abrir el archivo " << rutaArchivo << endl;
+        cerr << "❌ Error: No se pudo abrir el archivo " << rutaCSV << endl;
         return peliculas;
     }
 
     string linea;
+    getline(archivo, linea);  // Omitir encabezados si los hay
 
-    // Omitimos la primera línea si contiene encabezados
-    getline(archivo, linea);
+    json jsonPeliculas;
 
     while (getline(archivo, linea)) {
         stringstream ss(linea);
         string id, titulo, sinopsis, tagsStr;
 
-        // Leer los datos del CSV (ignoramos la primera columna ID)
-        getline(ss, id, ',');         // ID (ignorar)
-        getline(ss, titulo, ',');     // Título
-        getline(ss, sinopsis, ',');   // Sinopsis
-        getline(ss, tagsStr, ',');    // Tags (pero aún están juntos)
+        getline(ss, id, ',');
+        getline(ss, titulo, ',');
+        getline(ss, sinopsis, ',');
+        getline(ss, tagsStr, ',');
 
-        // 🔹 Separar los tags por espacio y limpiar comillas dobles
         vector<string> tags;
         stringstream ssTags(tagsStr);
         string tag;
-        while (ssTags >> tag) {  // Separa por espacio
-            // Eliminar comillas dobles si las tiene
+        while (getline(ssTags, tag, ' ')) {
             if (!tag.empty() && tag.front() == '"') tag.erase(0, 1);
             if (!tag.empty() && tag.back() == '"') tag.pop_back();
-
             tags.push_back(tag);
         }
 
-        // Crear película y agregarla al vector
         peliculas.emplace_back(titulo, sinopsis, tags);
+
+        // Guardar en JSON con el ID real
+        jsonPeliculas["peliculas"].push_back({
+                                                     {"id", id},
+                                                     {"titulo", titulo},
+                                                     {"sinopsis", sinopsis},
+                                                     {"tags", tags},
+                                                     {"likes", 0},
+                                                     {"ver_luego", json::array()}
+                                             });
     }
 
     archivo.close();
+
+    // Guardar el JSON corregido
+    ofstream outFile(rutaJSON);
+    outFile << jsonPeliculas.dump(4);
+    outFile.close();
+
+    cout << "✅ Archivo JSON creado exitosamente con IDs reales: " << rutaJSON << endl;
     return peliculas;
 }
+

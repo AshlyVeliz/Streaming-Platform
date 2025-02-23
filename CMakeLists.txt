@@ -5,7 +5,8 @@ set(CMAKE_CXX_STANDARD 17)
 include_directories(src)
 add_executable(Streaming_Platform
         src/main.cpp
+        src/DataProcessor.cpp
         src/TagTree.cpp
-        src/DataProcessor.cpp)
+        )
 
 

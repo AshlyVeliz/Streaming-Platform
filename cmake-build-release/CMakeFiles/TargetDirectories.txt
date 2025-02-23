@@ -1,0 +1,3 @@
+/Users/ashlyveliz/Documents/PROYECTOS/Streaming-Platform/cmake-build-release/CMakeFiles/Streaming_Platform.dir
+/Users/ashlyveliz/Documents/PROYECTOS/Streaming-Platform/cmake-build-release/CMakeFiles/edit_cache.dir
+/Users/ashlyveliz/Documents/PROYECTOS/Streaming-Platform/cmake-build-release/CMakeFiles/rebuild_cache.dir

@@ -4,10 +4,13 @@
 
 int main() {
     string rutaCSV = "/Users/ashlyveliz/Documents/PROYECTOS/Streaming-Platform/data/movies.csv";
-    vector<Pelicula> peliculas = DataProcessor::cargarPeliculasDesdeCSV(rutaCSV);
+    string rutaJSON = "/Users/ashlyveliz/Documents/PROYECTOS/Streaming-Platform/data/movies.json";
+
+    // Cargar películas en un vector desde JSON o CSV
+    vector<Pelicula> peliculas = DataProcessor::cargarPeliculasDesdeCSV(rutaCSV, rutaJSON);
 
     if (peliculas.empty()) {
-        cout << "No se cargaron películas. Revisa el archivo CSV." << endl;
+        cout << "❌ No se cargaron películas. Revisa el archivo CSV o JSON." << endl;
         return 1;
     }
 

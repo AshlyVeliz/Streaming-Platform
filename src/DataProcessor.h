@@ -4,10 +4,12 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include <sstream>
 #include <fstream>
+#include <sstream>
+#include "../include/json.hpp"  // Asegúrate de que json.hpp está en la carpeta include/
 
 using namespace std;
+using json = nlohmann::json;
 
 struct Pelicula {
     string titulo;
@@ -20,7 +22,11 @@ struct Pelicula {
 
 class DataProcessor {
 public:
-    static vector<Pelicula> cargarPeliculasDesdeCSV(const string& rutaArchivo);
+    // Cargar películas desde JSON a un vector
+    static vector<Pelicula> cargarPeliculasDesdeJSON(const string& rutaJSON);
+
+    // Cargar películas desde CSV (si no existe JSON) y convertir a JSON
+    static vector<Pelicula> cargarPeliculasDesdeCSV(const string& rutaCSV, const string& rutaJSON);
 };
 
 #endif // DATA_PROCESSOR_H

@@ -1,0 +1,9 @@
+# ninja log v6
+1	6	1740284387317397858	clean	ad90e366ad70d77b
+0	50	1740284733676844449	build.ninja	a6341da1238fb607
+0	5	1740284733685784620	clean	ad90e366ad70d77b
+1	6	1740284969460495459	clean	ad90e366ad70d77b
+1	871	1740284971531584328	CMakeFiles/Streaming_Platform.dir/src/main.cpp.o	c538a7fdc80ea1d6
+1	879	1740284971532210287	CMakeFiles/Streaming_Platform.dir/src/TagTree.cpp.o	da81b9d065d25c27
+1	2058	1740284971531988287	CMakeFiles/Streaming_Platform.dir/src/DataProcessor.cpp.o	d92f1ffb168fd8c3
+2058	2106	1740284973588648691	Streaming_Platform	3b4c223cf4e040bd
