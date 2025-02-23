@@ -1,5 +1,5 @@
-#ifndef DATA_PROCESSOR_H
-#define DATA_PROCESSOR_H
+#ifndef STREAMING_PLATFORM_DATA_PROCESSOR_H
+#define STREAMING_PLATFORM_DATA_PROCESSOR_H
 
 #include <iostream>
 #include <vector>
@@ -29,4 +29,4 @@ public:
     static vector<Pelicula> cargarPeliculasDesdeCSV(const string& rutaCSV, const string& rutaJSON);
 };
 
-#endif // DATA_PROCESSOR_H
+#endif STREAMING_PLATFORM_DATA_PROCESSOR_H

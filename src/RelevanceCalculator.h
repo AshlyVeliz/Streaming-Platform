@@ -1,8 +1,8 @@
 //
 // Created by Ashly Veliz on 22/02/25.
 //
-#ifndef RELEVANCE_CALCULATOR_H
-#define RELEVANCE_CALCULATOR_H
+#ifndef STREAMING_PLATFORM_RELEVANCE_CALCULATOR_H
+#define STREAMING_PLATFORM_RELEVANCE_CALCULATOR_H
 
 #include <string>
 #include <cmath>
@@ -13,4 +13,4 @@ public:
     static int calcularRelevancia(const Pelicula& pelicula, const string& consulta);
 };
 
-#endif // RELEVANCE_CALCULATOR_H
+#endif STREAMING_PLATFORM_RELEVANCE_CALCULATOR_H

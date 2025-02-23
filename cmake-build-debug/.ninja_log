@@ -1,12 +1,16 @@
 # ninja log v6
 2	9	1740284969177809132	clean	ad90e366ad70d77b
-2	67	1740286891767707997	build.ninja	1ebd18de7ab5d6e7
-5	1414	1740285401135144370	CMakeFiles/Streaming_Platform.dir/src/DataProcessor.cpp.o	bf70fbc0b8899a32
-1414	1467	1740285402544393210	Streaming_Platform	f2ed8bd109a4d52c
-4	909	1740284969764799545	CMakeFiles/Streaming_Platform.dir/src/main.cpp.o	fdb768451bd5123b
-4	936	1740284969765302045	CMakeFiles/Streaming_Platform.dir/src/TagTree.cpp.o	8df44a653db31c6b
-7	984	1740288808250750417	CMakeFiles/Streaming_Platform.dir/src/RelevanceCalculator.cpp.o	5f9b82b3da0483c3
-5	996	1740288808249560874	CMakeFiles/Streaming_Platform.dir/src/main.cpp.o	fdb768451bd5123b
-6	1022	1740288808250582834	CMakeFiles/Streaming_Platform.dir/src/TagTree.cpp.o	8df44a653db31c6b
+2	67	1740290652964178231	build.ninja	1ebd18de7ab5d6e7
 6	1555	1740288808250390917	CMakeFiles/Streaming_Platform.dir/src/DataProcessor.cpp.o	bf70fbc0b8899a32
 1555	1688	1740288809799227400	Streaming_Platform	260b75a482e94a1d
+5	996	1740288808249560874	CMakeFiles/Streaming_Platform.dir/src/main.cpp.o	fdb768451bd5123b
+6	1022	1740288808250582834	CMakeFiles/Streaming_Platform.dir/src/TagTree.cpp.o	8df44a653db31c6b
+7	984	1740288808250750417	CMakeFiles/Streaming_Platform.dir/src/RelevanceCalculator.cpp.o	5f9b82b3da0483c3
+7	1012	1740290938681618073	CMakeFiles/Streaming_Platform.dir/src/RelevanceCalculator.cpp.o	5f9b82b3da0483c3
+6	1026	1740290938680542608	CMakeFiles/Streaming_Platform.dir/src/main.cpp.o	fdb768451bd5123b
+7	1070	1740290938681209779	CMakeFiles/Streaming_Platform.dir/src/TagTree.cpp.o	8df44a653db31c6b
+7	1116	1740290938681850116	CMakeFiles/Streaming_Platform.dir/src/SearchTree.cpp.o	d7312b57b476e67e
+6	1562	1740290938680995028	CMakeFiles/Streaming_Platform.dir/src/DataProcessor.cpp.o	bf70fbc0b8899a32
+1562	1690	1740290940236543914	Streaming_Platform	2f5230b519bc076d
+6	882	1740291013892367205	CMakeFiles/Streaming_Platform.dir/src/main.cpp.o	fdb768451bd5123b
+883	945	1740291014768820529	Streaming_Platform	2f5230b519bc076d

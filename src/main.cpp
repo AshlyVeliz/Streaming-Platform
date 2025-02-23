@@ -1,6 +1,7 @@
 #include <iostream>
 #include "DataProcessor.h"
 #include "TagTree.h"
+#include "SearchTree.h"
 
 int main() {
     string rutaCSV = "/Users/ashlyveliz/Documents/PROYECTOS/Streaming-Platform/data/movies.csv";
@@ -15,35 +16,47 @@ int main() {
     }
 
     TagTree tagTree;
+    SearchTree searchTree;
 
-    // Insertar las películas en el árbol de tags
+    // Insertar las películas en los árboles
     for (const auto& pelicula : peliculas) {
         for (const auto& tag : pelicula.tags) {
             tagTree.insertar(tag, pelicula);
         }
+        searchTree.insertar(pelicula);
     }
 
-    // Mostrar los tags almacenados (opcional)
-    cout << "\n📌 Tags en el árbol de búsqueda: " << endl;
-    tagTree.imprimirTags();
-
-    // 🔍 Búsqueda por tag
+    // 🔍 Búsqueda por título con paginación
     while (true) {
-        string tagBuscado;
-        cout << "\n🔍 Ingrese un tag para buscar películas (o 'salir' para terminar): ";
-        cin >> tagBuscado;
+        string consulta;
+        cout << "\n🔍 Ingrese una palabra o frase para buscar (o 'salir'): ";
+        getline(cin, consulta);
 
-        if (tagBuscado == "salir") break;
+        if (consulta == "salir") break;
 
-        vector<Pelicula> resultados = tagTree.buscarPeliculasPorTag(tagBuscado);
+        int pagina = 0;
+        int peliculasPorPagina = 5;
 
-        if (resultados.empty()) {
-            cout << "❌ No se encontraron películas con el tag #" << tagBuscado << endl;
-        } else {
-            cout << "\n🎥 Películas con el tag #" << tagBuscado << ":" << endl;
-            for (size_t i = 0; i < min(resultados.size(), size_t(5)); ++i) {
-                cout << "\n🎬 Título: " << resultados[i].titulo << endl;
-                cout << "📖 Sinopsis: " << resultados[i].sinopsis << endl;
+        while (true) {
+            vector<Pelicula> resultados = searchTree.buscar(consulta, pagina, peliculasPorPagina);
+
+            if (resultados.empty()) {
+                cout << "❌ No se encontraron coincidencias.\n";
+                break;
+            }
+
+            cout << "\n🎥 Página " << (pagina + 1) << ":\n";
+            for (const auto& pelicula : resultados) {
+                cout << "🎬 " << pelicula.titulo << " | 📖 " << pelicula.sinopsis << endl;
+            }
+
+            cout << "\n📌 Escriba 'más' para ver más o 'salir' para terminar: ";
+            string opcion;
+            cin >> opcion;
+            if (opcion == "mas") {
+                pagina++;
+            } else {
+                break;
             }
         }
     }

@@ -1,6 +1,6 @@
 // Created by Ashly Veliz on 20/02/25.
-#ifndef TAG_TREE_H
-#define TAG_TREE_H
+#ifndef STREAMING_PLATFORM_TAG_TREE_H
+#define STREAMING_PLATFORM_TAG_TREE_H
 
 #include <iostream>
 #include <vector>
@@ -34,4 +34,4 @@ public:
     void imprimirTags();
 };
 
-#endif // TAG_TREE_H
+#endif STREAMING_PLATFORM_TAG_TREE_H

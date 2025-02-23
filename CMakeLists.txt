@@ -8,6 +8,8 @@ add_executable(Streaming_Platform
         src/DataProcessor.cpp
         src/TagTree.cpp
         src/RelevanceCalculator.cpp
+        src/SearchTree.cpp
+        src/SearchTree.h
 )
 
 
