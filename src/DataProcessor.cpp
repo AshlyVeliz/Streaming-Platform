@@ -13,40 +13,41 @@ vector<Pelicula> DataProcessor::cargarPeliculasDesdeJSON(const string& rutaJSON)
     jsonFile >> jsonPeliculas;
     jsonFile.close();
 
-    for (const auto& item : jsonPeliculas["peliculas"]) {
+    for (const auto& item : jsonPeliculas) {
         peliculas.emplace_back(
                 item["titulo"].get<string>(),
                 item["sinopsis"].get<string>(),
-                item["tags"].get<vector<string>>()
+                item["tags"].get<vector<string>>(),
+                item.value("likes", 0),
+                item.value("ver_luego", false)
         );
     }
 
-    cout << "✔ Películas cargadas desde JSON en vector: " << peliculas.size() << endl;
+    cout << "✔ Películas cargadas desde JSON: " << peliculas.size() << endl;
     return peliculas;
 }
 
 vector<Pelicula> DataProcessor::cargarPeliculasDesdeCSV(const string& rutaCSV, const string& rutaJSON) {
     vector<Pelicula> peliculas;
 
-    // Verificar si el JSON ya existe
     ifstream jsonFile(rutaJSON);
     if (jsonFile.good()) {
-        cout << "✔ Archivo JSON ya existe. Cargando datos desde JSON.\n";
+        cout << "✔ Archivo JSON encontrado. Cargando datos desde JSON.\n";
         return cargarPeliculasDesdeJSON(rutaJSON);
     }
 
-    ifstream archivo(rutaCSV);
-    if (!archivo.is_open()) {
-        cerr << "❌ Error: No se pudo abrir el archivo " << rutaCSV << endl;
+    ifstream archivoCSV(rutaCSV);
+    if (!archivoCSV.is_open()) {
+        cerr << "❌ Error: No se pudo abrir el archivo CSV " << rutaCSV << endl;
         return peliculas;
     }
 
     string linea;
-    getline(archivo, linea);  // Omitir encabezados si los hay
+    getline(archivoCSV, linea);
 
     json jsonPeliculas;
 
-    while (getline(archivo, linea)) {
+    while (getline(archivoCSV, linea)) {
         stringstream ss(linea);
         string id, titulo, sinopsis, tagsStr;
 
@@ -64,27 +65,27 @@ vector<Pelicula> DataProcessor::cargarPeliculasDesdeCSV(const string& rutaCSV, c
             tags.push_back(tag);
         }
 
-        peliculas.emplace_back(titulo, sinopsis, tags);
-
-        // Guardar en JSON con el ID real
-        jsonPeliculas["peliculas"].push_back({
-                                                     {"id", id},
-                                                     {"titulo", titulo},
-                                                     {"sinopsis", sinopsis},
-                                                     {"tags", tags},
-                                                     {"likes", 0},
-                                                     {"ver_luego", json::array()}
-                                             });
+        peliculas.emplace_back(titulo, sinopsis, tags, 0, false);
+        jsonPeliculas.push_back({
+                                        {"id", id},
+                                        {"titulo", titulo},
+                                        {"sinopsis", sinopsis},
+                                        {"tags", tags},
+                                        {"likes", 0},
+                                        {"ver_luego", false}
+                                });
     }
 
-    archivo.close();
+    archivoCSV.close();
 
-    // Guardar el JSON corregido
     ofstream outFile(rutaJSON);
-    outFile << jsonPeliculas.dump(4);
-    outFile.close();
+    if (outFile.is_open()) {
+        outFile << jsonPeliculas.dump(4);
+        outFile.close();
+        cout << "✅ Archivo JSON creado con éxito: " << rutaJSON << endl;
+    } else {
+        cerr << "❌ Error: No se pudo guardar el archivo JSON." << endl;
+    }
 
-    cout << "✅ Archivo JSON creado exitosamente con IDs reales: " << rutaJSON << endl;
     return peliculas;
 }
-

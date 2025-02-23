@@ -70,6 +70,13 @@ build CMakeFiles/Streaming_Platform.dir/src/TagTree.cpp.o: CXX_COMPILER__Streami
   OBJECT_DIR = CMakeFiles/Streaming_Platform.dir
   OBJECT_FILE_DIR = CMakeFiles/Streaming_Platform.dir/src
 
+build CMakeFiles/Streaming_Platform.dir/src/RelevanceCalculator.cpp.o: CXX_COMPILER__Streaming_Platform_unscanned_Debug /Users/ashlyveliz/Documents/PROYECTOS/Streaming-Platform/src/RelevanceCalculator.cpp || cmake_object_order_depends_target_Streaming_Platform
+  DEP_FILE = CMakeFiles/Streaming_Platform.dir/src/RelevanceCalculator.cpp.o.d
+  FLAGS = -g -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk -mmacosx-version-min=15.0 -fcolor-diagnostics
+  INCLUDES = -I/Users/ashlyveliz/Documents/PROYECTOS/Streaming-Platform/src
+  OBJECT_DIR = CMakeFiles/Streaming_Platform.dir
+  OBJECT_FILE_DIR = CMakeFiles/Streaming_Platform.dir/src
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Streaming_Platform
@@ -78,7 +85,7 @@ build CMakeFiles/Streaming_Platform.dir/src/TagTree.cpp.o: CXX_COMPILER__Streami
 #############################################
 # Link the executable Streaming_Platform
 
-build Streaming_Platform: CXX_EXECUTABLE_LINKER__Streaming_Platform_Debug CMakeFiles/Streaming_Platform.dir/src/main.cpp.o CMakeFiles/Streaming_Platform.dir/src/DataProcessor.cpp.o CMakeFiles/Streaming_Platform.dir/src/TagTree.cpp.o
+build Streaming_Platform: CXX_EXECUTABLE_LINKER__Streaming_Platform_Debug CMakeFiles/Streaming_Platform.dir/src/main.cpp.o CMakeFiles/Streaming_Platform.dir/src/DataProcessor.cpp.o CMakeFiles/Streaming_Platform.dir/src/TagTree.cpp.o CMakeFiles/Streaming_Platform.dir/src/RelevanceCalculator.cpp.o
   FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk -mmacosx-version-min=15.0
   OBJECT_DIR = CMakeFiles/Streaming_Platform.dir
   POST_BUILD = :
