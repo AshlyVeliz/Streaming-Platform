@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>CineFlix</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="auth-container">
+    <h2>Iniciar sesión</h2>
+    <input type="text" id="username" placeholder="Usuario">
+    <button onclick="login()">Entrar</button>
+    <p>¿No tienes cuenta? <a href="#" onclick="register()">Regístrate</a></p>
+</div>
+
+<div id="app-container" style="display: none;">
+    <div class="container">
+        <!-- Barra lateral con tags -->
+        <div class="sidebar">
+            <h2>Géneros Populares</h2>
+            <input type="text" class="tag-search" placeholder="Buscar tags...">
+            <div class="tag-button">Acción</div>
+            <div class="tag-button">Comedia</div>
+            <div class="tag-button">Terror</div>
+            <div class="tag-button">Romance</div>
+        </div>
+
+        <!-- Contenido principal -->
+        <div class="main-content">
+            <button onclick="logout()">Cerrar sesión</button>
+
+            <h2>🎬 Películas que te Gustan</h2>
+            <div class="movies-section" id="liked-movies"></div>
+
+            <h2>🕒 Ver más tarde</h2>
+            <div class="movies-section" id="watch-later"></div>
+        </div>
+    </div>
+</div>
+
+<script src="dist/main.js" defer></script>
+</body>
+</html>

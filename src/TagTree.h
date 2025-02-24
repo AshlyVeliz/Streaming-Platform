@@ -34,4 +34,4 @@ public:
     void imprimirTags();
 };
 
-#endif STREAMING_PLATFORM_TAG_TREE_H
+#endif // STREAMING_PLATFORM_TAG_TREE_H

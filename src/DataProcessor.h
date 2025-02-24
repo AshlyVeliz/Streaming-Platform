@@ -29,4 +29,4 @@ public:
     static vector<Pelicula> cargarPeliculasDesdeCSV(const string& rutaCSV, const string& rutaJSON);
 };
 
-#endif STREAMING_PLATFORM_DATA_PROCESSOR_H
+#endif //STREAMING_PLATFORM_DATA_PROCESSOR_H

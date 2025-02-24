@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    /* Visit https://aka.ms/tsconfig to read more about this file */
+
+    /* Projects */
+    // "incremental": true,                              /* Save .tsbuildinfo files to allow for incremental compilation of projects. */
+
+    /* Language and Environment */
+    "target": "es2016",                                  /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
+
+    /* Modules */
+    "module": "commonjs",                                /* Specify what module code is generated. */
+    "rootDir": "./src_front",                           /* Indica la carpeta donde están los archivos TypeScript */
+    "outDir": "./dist",                                 /* Carpeta donde se guardará el código compilado */
+
+    /* Resolución de módulos */
+    "moduleResolution": "node",                         /* Permite usar módulos de Node.js */
+    "baseUrl": "./",                                    /* Base de referencia para resolver módulos */
+    "paths": {
+      "*": ["node_modules/*"]
+    },
+
+    /* Soporte para importar JSON y otros archivos */
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,                            /* Permite compatibilidad con CommonJS */
+    "forceConsistentCasingInFileNames": true,           /* Asegura consistencia en los nombres de archivos */
+
+    /* Opciones estrictas */
+    "strict": true,                                      /* Habilita todas las comprobaciones estrictas */
+    "skipLibCheck": true                                /* Evita comprobar archivos de declaración de bibliotecas */
+  },
+  "include": ["src_front/**/*"]                          /* Especifica que todos los archivos en src_front se compilen */
+}

@@ -13,4 +13,5 @@ public:
     static int calcularRelevancia(const Pelicula& pelicula, const string& consulta);
 };
 
-#endif STREAMING_PLATFORM_RELEVANCE_CALCULATOR_H
+#endif
+//STREAMING_PLATFORM_RELEVANCE_CALCULATOR_H

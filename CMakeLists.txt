@@ -10,6 +10,8 @@ add_executable(Streaming_Platform
         src/RelevanceCalculator.cpp
         src/SearchTree.cpp
         src/SearchTree.h
+        src/Ver_masTarde.cpp
+        src/Ver_masTarde.h
 )
 
 

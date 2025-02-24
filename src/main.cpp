@@ -2,6 +2,7 @@
 #include "DataProcessor.h"
 #include "TagTree.h"
 #include "SearchTree.h"
+#include "Ver_masTarde.h"
 
 int main() {
     string rutaCSV = "/Users/ashlyveliz/Documents/PROYECTOS/Streaming-Platform/data/movies.csv";
@@ -17,6 +18,7 @@ int main() {
 
     TagTree tagTree;
     SearchTree searchTree;
+    Ver_masTarde verMasTarde;
 
     // Insertar las películas en los árboles
     for (const auto& pelicula : peliculas) {
@@ -46,17 +48,40 @@ int main() {
             }
 
             cout << "\n🎥 Página " << (pagina + 1) << ":\n";
-            for (const auto& pelicula : resultados) {
-                cout << "🎬 " << pelicula.titulo << " | 📖 " << pelicula.sinopsis << endl;
+            for (size_t i = 0; i < resultados.size(); ++i) {
+                cout << i + 1 << ". 🎬 " << resultados[i].titulo << " | 📖 " << resultados[i].sinopsis << endl;
             }
 
-            cout << "\n📌 Escriba 'más' para ver más o 'salir' para terminar: ";
+            cout << "\nOpciones:\n"
+                 << "👉 'mas' para ver más\n"
+                 << "👉 'agregar' para agregar una película a 'Ver más tarde'\n"
+                 << "👉 'ver' para ver tu lista\n"
+                 << "👉 'eliminar' para quitar la última añadida\n"
+                 << "👉 'salir' para terminar\n"
+                 << "Selecciona una opción: ";
+
             string opcion;
             cin >> opcion;
+            cin.ignore();  // Limpiar buffer
+
             if (opcion == "mas") {
                 pagina++;
-            } else {
+            } else if (opcion == "agregar") {
+                cout << "Ingrese el número de la película para agregar: ";
+                int num; cin >> num;
+                if (num >= 1 && num <= (int)resultados.size()) {
+                    verMasTarde.agregar(resultados[num - 1]);
+                } else {
+                    cout << "⚠️ Número inválido.\n";
+                }
+            } else if (opcion == "ver") {
+                verMasTarde.mostrar();
+            } else if (opcion == "eliminar") {
+                verMasTarde.eliminar();
+            } else if (opcion == "salir") {
                 break;
+            } else {
+                cout << "❌ Opción inválida.\n";
             }
         }
     }

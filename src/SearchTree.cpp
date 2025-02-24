@@ -118,7 +118,7 @@ void SearchTree::buscarCoincidencias(Nodo* nodo, const string& consulta, vector<
 }
 
 //Método público para buscar películas con paginación
-vector<Pelicula> SearchTree::buscar(const string& consulta, int pagina, int peliculasPorPagina) {
+                                    vector<Pelicula> SearchTree::buscar(const string& consulta, int pagina, int peliculasPorPagina) {
     vector<pair<Pelicula, int>> resultados;
     buscarCoincidencias(raiz, consulta, resultados);
 
