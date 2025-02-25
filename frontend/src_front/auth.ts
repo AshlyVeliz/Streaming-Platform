@@ -22,7 +22,7 @@ function login() {
     checkSession();
 }
 
-// Registrar usuario (Simulado)
+// Registrar usuario
 function register() {
     alert("Registro exitoso. Ahora inicia sesión.");
 }

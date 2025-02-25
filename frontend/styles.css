@@ -7,7 +7,7 @@ body {
     padding: 0;
 }
 
-/* 🔹 Contenedor principal */
+/* Contenedor principal */
 .container {
     display: flex;
     justify-content: space-between;
@@ -33,7 +33,7 @@ body {
     width: 100%;
     padding: 8px;
     border-radius: 5px;
-    background-color: white;
+    background-color: #c93535;
     color: black;
     margin-bottom: 10px;
 }

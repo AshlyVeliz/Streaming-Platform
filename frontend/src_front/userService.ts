@@ -63,7 +63,7 @@ export function loadWatchLaterMovies() {
     });
 }
 
-// Eliminar última película agregada (LIFO)
+// Eliminar última película agregada
 export function removeFromWatchLater() {
     watchLaterStack.pop();
     loadWatchLaterMovies();
