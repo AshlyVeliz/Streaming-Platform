@@ -84,13 +84,6 @@ build CMakeFiles/Streaming_Platform.dir/src/SearchTree.cpp.obj: CXX_COMPILER__St
   OBJECT_DIR = CMakeFiles\Streaming_Platform.dir
   OBJECT_FILE_DIR = CMakeFiles\Streaming_Platform.dir\src
 
-build CMakeFiles/Streaming_Platform.dir/src/Ver_masTarde.cpp.obj: CXX_COMPILER__Streaming_Platform_unscanned_Release C$:/Streaming-Platform/src/Ver_masTarde.cpp || cmake_object_order_depends_target_Streaming_Platform
-  DEP_FILE = CMakeFiles\Streaming_Platform.dir\src\Ver_masTarde.cpp.obj.d
-  FLAGS = -O3 -DNDEBUG -std=gnu++17 -fdiagnostics-color=always
-  INCLUDES = -IC:/Streaming-Platform/src
-  OBJECT_DIR = CMakeFiles\Streaming_Platform.dir
-  OBJECT_FILE_DIR = CMakeFiles\Streaming_Platform.dir\src
-
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Streaming_Platform
@@ -99,7 +92,7 @@ build CMakeFiles/Streaming_Platform.dir/src/Ver_masTarde.cpp.obj: CXX_COMPILER__
 #############################################
 # Link the executable Streaming_Platform.exe
 
-build Streaming_Platform.exe: CXX_EXECUTABLE_LINKER__Streaming_Platform_Release CMakeFiles/Streaming_Platform.dir/src/main.cpp.obj CMakeFiles/Streaming_Platform.dir/src/DataProcessor.cpp.obj CMakeFiles/Streaming_Platform.dir/src/TagTree.cpp.obj CMakeFiles/Streaming_Platform.dir/src/RelevanceCalculator.cpp.obj CMakeFiles/Streaming_Platform.dir/src/SearchTree.cpp.obj CMakeFiles/Streaming_Platform.dir/src/Ver_masTarde.cpp.obj
+build Streaming_Platform.exe: CXX_EXECUTABLE_LINKER__Streaming_Platform_Release CMakeFiles/Streaming_Platform.dir/src/main.cpp.obj CMakeFiles/Streaming_Platform.dir/src/DataProcessor.cpp.obj CMakeFiles/Streaming_Platform.dir/src/TagTree.cpp.obj CMakeFiles/Streaming_Platform.dir/src/RelevanceCalculator.cpp.obj CMakeFiles/Streaming_Platform.dir/src/SearchTree.cpp.obj
   FLAGS = -O3 -DNDEBUG
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Streaming_Platform.dir

@@ -6,7 +6,7 @@
 			[
 				{
 					"build" : ".",
-					"jsonFile" : "directory-.-Release-d0094a50bb2071803777.json",
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.16"
@@ -19,7 +19,7 @@
 					]
 				}
 			],
-			"name" : "Release",
+			"name" : "Debug",
 			"projects" : 
 			[
 				{
@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "Streaming_Platform::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-Streaming_Platform-Release-3c85921aa61a310279e2.json",
+					"jsonFile" : "target-Streaming_Platform-Debug-ee04d8a451f5da2d85f3.json",
 					"name" : "Streaming_Platform",
 					"projectIndex" : 0
 				}
@@ -49,7 +49,7 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "C:/Streaming-Platform/cmake-build-release",
+		"build" : "C:/Streaming-Platform/cmake-build-debug",
 		"source" : "C:/Streaming-Platform"
 	},
 	"version" : 

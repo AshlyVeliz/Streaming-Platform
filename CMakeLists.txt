@@ -13,6 +13,9 @@ add_executable(Streaming_Platform
         src/Ver_masTarde.h
         src/ListaPila.h
         src/Megusta.h
+        src/AlgoritmoSimlitud.h
+        src/SimilitudTag.h
+        src/SimilitudSinopsis.h
 )
 
 
