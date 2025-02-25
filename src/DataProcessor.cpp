@@ -5,7 +5,7 @@ vector<Pelicula> DataProcessor::cargarPeliculasDesdeJSON(const string& rutaJSON)
     ifstream jsonFile(rutaJSON);
 
     if (!jsonFile.is_open()) {
-        cerr << "❌ Error: No se pudo abrir el archivo JSON " << rutaJSON << endl;
+        cerr << "Error: No se pudo abrir el archivo JSON " << rutaJSON << endl;
         return peliculas;
     }
 
@@ -23,7 +23,7 @@ vector<Pelicula> DataProcessor::cargarPeliculasDesdeJSON(const string& rutaJSON)
         );
     }
 
-    cout << "✔ Películas cargadas desde JSON: " << peliculas.size() << endl;
+    cout << "Peliculas cargadas desde JSON: " << peliculas.size() << endl;
     return peliculas;
 }
 
@@ -32,13 +32,13 @@ vector<Pelicula> DataProcessor::cargarPeliculasDesdeCSV(const string& rutaCSV, c
 
     ifstream jsonFile(rutaJSON);
     if (jsonFile.good()) {
-        cout << "✔ Archivo JSON encontrado. Cargando datos desde JSON.\n";
+        cout << "Archivo JSON encontrado. Cargando datos desde JSON.\n";
         return cargarPeliculasDesdeJSON(rutaJSON);
     }
 
     ifstream archivoCSV(rutaCSV);
     if (!archivoCSV.is_open()) {
-        cerr << "❌ Error: No se pudo abrir el archivo CSV " << rutaCSV << endl;
+        cerr << "Error: No se pudo abrir el archivo CSV " << rutaCSV << endl;
         return peliculas;
     }
 
@@ -82,9 +82,9 @@ vector<Pelicula> DataProcessor::cargarPeliculasDesdeCSV(const string& rutaCSV, c
     if (outFile.is_open()) {
         outFile << jsonPeliculas.dump(4);
         outFile.close();
-        cout << "✅ Archivo JSON creado con éxito: " << rutaJSON << endl;
+        cout << "Archivo JSON creado con exito: " << rutaJSON << endl;
     } else {
-        cerr << "❌ Error: No se pudo guardar el archivo JSON." << endl;
+        cerr << "Error: No se pudo guardar el archivo JSON." << endl;
     }
 
     return peliculas;

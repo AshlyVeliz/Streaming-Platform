@@ -45,7 +45,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-O3 -DNDEBUG -std=gnu++17 -fdiagnostics-color=always"
+					"fragment" : "-g -std=gnu++17 -fdiagnostics-color=always"
 				}
 			],
 			"includes" : 
@@ -70,8 +70,7 @@
 				1,
 				2,
 				3,
-				4,
-				6
+				4
 			]
 		}
 	],
@@ -81,7 +80,7 @@
 		"commandFragments" : 
 		[
 			{
-				"fragment" : "-O3 -DNDEBUG",
+				"fragment" : "-g",
 				"role" : "flags"
 			},
 			{
@@ -112,8 +111,7 @@
 				1,
 				2,
 				3,
-				4,
-				6
+				4
 			]
 		},
 		{
@@ -121,7 +119,9 @@
 			"sourceIndexes" : 
 			[
 				5,
-				7
+				6,
+				7,
+				8
 			]
 		}
 	],
@@ -164,13 +164,17 @@
 		},
 		{
 			"backtrace" : 1,
-			"compileGroupIndex" : 0,
-			"path" : "src/Ver_masTarde.cpp",
-			"sourceGroupIndex" : 0
+			"path" : "src/Ver_masTarde.h",
+			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 1,
-			"path" : "src/Ver_masTarde.h",
+			"path" : "src/ListaPila.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/Megusta.h",
 			"sourceGroupIndex" : 1
 		}
 	],

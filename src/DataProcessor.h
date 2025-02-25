@@ -11,7 +11,7 @@
 using namespace std;
 using json = nlohmann::json;
 
-//Estructura para almacenar la información de una película
+// estructura para almacenar info de una pelicula
 struct Pelicula {
     string titulo;
     string sinopsis;

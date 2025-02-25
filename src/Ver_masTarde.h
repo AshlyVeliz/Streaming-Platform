@@ -4,18 +4,17 @@
 
 #ifndef STREAMING_PLATFORM_VER_MASTARDE_H
 #define STREAMING_PLATFORM_VER_MASTARDE_H
-#include <stack>
-#include "DataProcessor.h"  // Asegúrate de que Pelicula esté declarada aquí
-using namespace std;
+#include "ListaPila.h"
+#include "DataProcessor.h"
 
 class Ver_masTarde {
 private:
-    stack<Pelicula> pila;
-public:
-    void agregar(const Pelicula& pelicula);
-    void mostrar() const;
-    void eliminar();
-};
+    ListaPila<Pelicula> lista;
 
+public:
+    void agregar(const Pelicula& pelicula) { lista.agregar(pelicula, "Ver más tarde"); }
+    void mostrar() const { lista.mostrar("Ver más tarde"); }
+    void eliminar() { lista.eliminar("Ver más tarde"); }
+};
 
 #endif //STREAMING_PLATFORM_VER_MASTARDE_H
