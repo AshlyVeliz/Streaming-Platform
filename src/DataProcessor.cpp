@@ -1,3 +1,5 @@
+#include <queue>
+#include <condition_variable>
 #include "DataProcessor.h"
 
 using namespace std;

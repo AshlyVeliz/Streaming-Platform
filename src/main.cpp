@@ -9,8 +9,8 @@
 using namespace std;
 
 int main() {
-    string rutaCSV = "/Users/ashlyveliz/Documents/PROYECTOS/Streaming-Platform/data/movies.csv";
-    string rutaJSON = "/Users/ashlyveliz/Documents/PROYECTOS/Streaming-Platform/data/movies.json";
+    string rutaCSV = "C:\\Streaming-Platform\\data\\movies.csv";
+    string rutaJSON = "C:\\Streaming-Platform\\data\\movies.json";
 
     // Cargar películas en un vector desde JSON o CSV
     vector<Pelicula> peliculas = DataProcessor::cargarPeliculasDesdeCSV(rutaCSV, rutaJSON);

@@ -1,21 +1,7 @@
-# ninja log v6
-3	859	1740503745215096341	CMakeFiles/Streaming_Platform.dir/src/RelevanceCalculator.cpp.o	7149593cb8071958
-3	901	1740503745214912882	CMakeFiles/Streaming_Platform.dir/src/TagTree.cpp.o	a2a9c838e81c13f9
-3	943	1740503745215274550	CMakeFiles/Streaming_Platform.dir/src/SearchTree.cpp.o	50bd75a4b8f51d4b
-2	1028	1740503745214130713	CMakeFiles/Streaming_Platform.dir/src/main.cpp.o	8b8555133e67c8a9
-2	1512	1740503745214698923	CMakeFiles/Streaming_Platform.dir/src/DataProcessor.cpp.o	5c6c0f144e8f0e04
-1512	1572	1740503746724535072	Streaming_Platform	38e52cbefa39dfaa
-6	975	1740503782955970788	CMakeFiles/Streaming_Platform.dir/src/main.cpp.o	8b8555133e67c8a9
-975	1032	1740503783925385584	Streaming_Platform	38e52cbefa39dfaa
-6	1218	1740504647976919818	CMakeFiles/Streaming_Platform.dir/src/RelevanceCalculator.cpp.o	7149593cb8071958
-6	1257	1740504647976745067	CMakeFiles/Streaming_Platform.dir/src/TagTree.cpp.o	a2a9c838e81c13f9
-6	1335	1740504647977095485	CMakeFiles/Streaming_Platform.dir/src/SearchTree.cpp.o	50bd75a4b8f51d4b
-5	1436	1740504647976070774	CMakeFiles/Streaming_Platform.dir/src/main.cpp.o	8b8555133e67c8a9
-6	2047	1740504647976544525	CMakeFiles/Streaming_Platform.dir/src/DataProcessor.cpp.o	5c6c0f144e8f0e04
-2047	2195	1740504650017674905	Streaming_Platform	38e52cbefa39dfaa
-10	1173	1740507656057148833	CMakeFiles/Streaming_Platform.dir/src/main.cpp.o	8b8555133e67c8a9
-1173	1344	1740507657220012805	Streaming_Platform	38e52cbefa39dfaa
-18	1318	1740508537518060498	CMakeFiles/Streaming_Platform.dir/src/main.cpp.o	8b8555133e67c8a9
-1318	1466	1740508538818312351	Streaming_Platform	38e52cbefa39dfaa
-7	1289	1740509988079730881	CMakeFiles/Streaming_Platform.dir/src/main.cpp.o	8b8555133e67c8a9
-1290	1428	1740509989362041954	Streaming_Platform	38e52cbefa39dfaa
+# ninja log v5
+162	2442	7622187687368676	CMakeFiles/Streaming_Platform.dir/src/RelevanceCalculator.cpp.obj	64e2d4cb266a20cf
+111	2517	7622187688165975	CMakeFiles/Streaming_Platform.dir/src/TagTree.cpp.obj	d33c20c80000e1fe
+56	2635	7622187689331202	CMakeFiles/Streaming_Platform.dir/src/SearchTree.cpp.obj	750f001660015d93
+46	2888	7622187691903417	CMakeFiles/Streaming_Platform.dir/src/main.cpp.obj	9255806d292e8906
+3	3960	7622189653959075	CMakeFiles/Streaming_Platform.dir/src/DataProcessor.cpp.obj	7d9e09e2a24b3842
+3960	5715	7622189671473486	Streaming_Platform.exe	76bb4133a0fc86f9
