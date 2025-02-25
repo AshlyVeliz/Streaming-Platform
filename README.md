@@ -3,7 +3,7 @@
 ## Integrantes
 * Ashly Veliz
 * Darlene Escobar Hinojosa
-* 
+  
 ---
 ## Plataforma de Streaming
 Este proyecto implementa una plataforma de **streaming** que permite la administración de la **búsqueda y visualización** de películas.
