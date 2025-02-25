@@ -68,7 +68,7 @@ SearchTree::Nodo* SearchTree::insertarNodo(Nodo* nodo, const Pelicula& pelicula)
     } else if (pelicula.titulo > nodo->pelicula.titulo) {
         nodo->derecha = insertarNodo(nodo->derecha, pelicula);
     } else {
-        return nodo; // Evitar duplicados exactos
+        return nodo;
     }
 
     //Actualizar altura

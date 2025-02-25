@@ -25,7 +25,7 @@ private:
 
     Nodo* raiz;
 
-    // 🔹 Funciones internas para manejar el árbol AVL
+    // Funciones internas para manejar el árbol AVL
     int obtenerAltura(Nodo* nodo);
     int obtenerBalance(Nodo* nodo);
     Nodo* rotarDerecha(Nodo* y);

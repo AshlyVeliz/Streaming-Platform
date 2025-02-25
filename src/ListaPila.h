@@ -20,7 +20,7 @@ public:
     void mostrar(const string& nombreLista) const;
     void eliminar(const string& nombreLista);
 
-    // ✅ Agregar funciones que faltaban
+    // Agregar funciones que faltaban
     bool estaVacia() const;
     T obtenerUltima() const;
 };
@@ -56,13 +56,13 @@ void ListaPila<T>::eliminar(const string& nombreLista) {
     pila.pop();
 }
 
-// ✅ Nueva función para verificar si la pila está vacía
+// Función para verificar si la pila está vacía
 template<typename T>
 bool ListaPila<T>::estaVacia() const {
     return pila.empty();
 }
 
-// ✅ Nueva función para obtener el último elemento de la pila
+// Función para obtener el último elemento de la pila
 template<typename T>
 T ListaPila<T>::obtenerUltima() const {
     if (pila.empty()) {

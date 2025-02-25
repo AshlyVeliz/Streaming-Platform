@@ -1,17 +1,18 @@
-#ifndef STREAMING_PLATFORM_DATA_PROCESSOR_H
-#define STREAMING_PLATFORM_DATA_PROCESSOR_H
+#ifndef DATA_PROCESSOR_H
+#define DATA_PROCESSOR_H
 
 #include <iostream>
 #include <vector>
 #include <string>
-#include <fstream>
 #include <sstream>
+#include <fstream>
+#include <thread>
+#include <mutex>
 #include "../include/json.hpp"
 
 using namespace std;
 using json = nlohmann::json;
 
-// estructura para almacenar info de una pelicula
 struct Pelicula {
     string titulo;
     string sinopsis;
@@ -25,8 +26,13 @@ struct Pelicula {
 
 class DataProcessor {
 public:
-    static vector<Pelicula> cargarPeliculasDesdeJSON(const string& rutaJSON);
     static vector<Pelicula> cargarPeliculasDesdeCSV(const string& rutaCSV, const string& rutaJSON);
+    static vector<Pelicula> cargarPeliculasDesdeJSON(const string& rutaJSON);
+    static void guardarJSON(const vector<Pelicula>& peliculas, const string& rutaJSON);
+
+private:
+    static void procesarLinea(const string& linea, vector<Pelicula>& peliculas, mutex& m);
 };
 
-#endif //STREAMING_PLATFORM_DATA_PROCESSOR_H
+#endif // DATA_PROCESSOR_H
+

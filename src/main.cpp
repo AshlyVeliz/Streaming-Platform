@@ -3,20 +3,20 @@
 #include "TagTree.h"
 #include "SearchTree.h"
 #include "Ver_masTarde.h"
-#include "Megusta.h"  // ✅ Asegurar que el include esté bien escrito
+#include "Megusta.h"
 #include "SimilitudTag.h"
 
 using namespace std;
 
 int main() {
-    string rutaCSV = "C:\\Streaming-Platform\\data\\movies.csv";
-    string rutaJSON = "C:\\Streaming-Platform\\data\\movies.json";
+    string rutaCSV = "/Users/ashlyveliz/Documents/PROYECTOS/Streaming-Platform/data/movies.csv";
+    string rutaJSON = "/Users/ashlyveliz/Documents/PROYECTOS/Streaming-Platform/data/movies.json";
 
     // Cargar películas en un vector desde JSON o CSV
     vector<Pelicula> peliculas = DataProcessor::cargarPeliculasDesdeCSV(rutaCSV, rutaJSON);
 
     if (peliculas.empty()) {
-        cout << "❌ No se cargaron películas. Revisa el archivo CSV o JSON." << endl;
+        cout << "🚨 No se cargaron películas. Revisa el archivo .CSV o .JSON 🚨" << endl;
         return 1;
     }
 
@@ -24,9 +24,9 @@ int main() {
     SearchTree searchTree;
     Ver_masTarde verMasTarde;
 
-    // 🔥 Estrategia de similitud basada en tags (puedes cambiar a SimilitudPorSinopsis)
+    // Similitud basada en tags
     SimilitudPorTags estrategiaSimilitud;
-    Megusta meGusta(&estrategiaSimilitud);  // ✅ Se asegura que el nombre es "Megusta"
+    Megusta meGusta(&estrategiaSimilitud);
 
     // Insertar las películas en los árboles
     for (const auto& pelicula : peliculas) {
@@ -36,84 +36,118 @@ int main() {
         searchTree.insertar(pelicula);
     }
 
-    // 🔹 Búsqueda por título con paginación y opciones
-    while (true) {
-        string consulta;
-        cout << "\n🔎 Ingrese una palabra o frase para buscar (o 'salir'): ";
-        getline(cin, consulta);
+    cout << "🎉Bienvenido a CINEFLIX (movie discovery system) 🎬🍿" << endl;
 
-        if (consulta == "salir") break;
+    while (true) {
+        string opcionBusqueda;
+        cout << "\n Opciones de búsqueda: (Ingresa el número de la opción)\n"
+             << "1️⃣ Buscar por palabra o frase\n"
+             << "2️⃣ Buscar por tag\n"
+             << "3️⃣ Salir\n"
+             << "➡️ Selecciona una opción: ";
+        cin >> opcionBusqueda;
+        cin.ignore();
+
+        if (opcionBusqueda == "3") break;
+
+        string consulta;
+        if (opcionBusqueda == "1") {
+            cout << "\n🔎Ingrese una palabra o frase para buscar: ";
+            getline(cin, consulta);
+        } else if (opcionBusqueda == "2") {
+            cout << "\n🔍#️⃣Ingrese un tag para buscar películas: ";
+            cin >> consulta;
+            cin.ignore();
+        } else {
+            cout << "Opción inválida😒 Intente nuevamente😛\n";
+            continue;
+        }
 
         int pagina = 0;
         int peliculasPorPagina = 5;
+        vector<Pelicula> resultados;
 
         while (true) {
-            vector<Pelicula> resultados = searchTree.buscar(consulta, pagina, peliculasPorPagina);
+            if (opcionBusqueda == "1") {
+                resultados = searchTree.buscar(consulta, pagina, peliculasPorPagina);
+            } else if (opcionBusqueda == "2") {
+                resultados = tagTree.buscarPeliculasPorTag(consulta);
+            }
 
             if (resultados.empty()) {
-                cout << "❌ No se encontraron coincidencias.\n";
+                cout << "No se encontraron coincidencias😩 \n";
                 break;
             }
 
             cout << "\n📜 Página " << (pagina + 1) << ":\n";
-            for (size_t i = 0; i < resultados.size(); ++i) {
+            for (size_t i = 0; i < min(resultados.size(), size_t(peliculasPorPagina)); ++i) {
                 cout << i + 1 << ". 🎬 " << resultados[i].titulo << " | 📖 " << resultados[i].sinopsis << endl;
             }
 
-            cout << "\n📌 Opciones:\n"
+            cout << "\nOpciones:\n"
                  << "'mas' -> Ver más resultados\n"
                  << "'agregar' -> Agregar a 'Ver más tarde'\n"
                  << "'like' -> Agregar a 'Me gusta'\n"
-                 << "'ver' -> Ver listas\n"
+                 << "'ver' -> Ver listas guardadas\n"
                  << "'recomendar' -> Mostrar películas similares a 'Me gusta'\n"
-                 << "'eliminar' -> Quitar la última añadida\n"
-                 << "'salir' -> Terminar\n"
-                 << "➡️ Selecciona una opción: ";
+                 << "'eliminar' -> Quitar la última añadida de una lista\n"
+                 << "'salir' -> Terminar búsqueda\n"
+                 << "➡️ Selecciona una opcion: ";
 
             string opcion;
             cin >> opcion;
-            cin.ignore();  // Limpiar buffer
+            cin.ignore();
 
             if (opcion == "mas") {
-                pagina++;
+                if ((pagina + 1) * peliculasPorPagina >= resultados.size()) {
+                    cout << "No hay más resultados 👻 (busca otra peli 🤓)\n";
+                } else {
+                    pagina++;
+                }
             } else if (opcion == "agregar") {
                 cout << "Ingrese el número de la película para agregar a 'Ver más tarde': ";
-                int num; cin >> num;
+                int num;
+                cin >> num;
                 if (num >= 1 && num <= (int)resultados.size()) {
                     verMasTarde.agregar(resultados[num - 1]);
+                    cout << "✔︎ Agregada a 'Ver más tarde'.\n";
                 } else {
-                    cout << "❌ Número inválido.\n";
+                    cout << "Número inválido😒\n";
                 }
             } else if (opcion == "like") {
                 cout << "Ingrese el número de la película para agregar a 'Me gusta': ";
-                int num; cin >> num;
+                int num;
+                cin >> num;
                 if (num >= 1 && num <= (int)resultados.size()) {
                     meGusta.agregar(resultados[num - 1]);
+                    cout << "❤️Agregada a 'Me gusta'.\n";
                 } else {
-                    cout << "❌ Número inválido.\n";
+                    cout << "Número inválido😒\n";
                 }
             } else if (opcion == "ver") {
-                cout << "\n📂 Lista 'Ver más tarde':\n";
+                cout << "\n📂Lista 'Ver más tarde':\n";
                 verMasTarde.mostrar();
-                cout << "\n❤️ Lista 'Me gusta':\n";
+                cout << "\n❤️Lista 'Me gusta':\n";
                 meGusta.mostrar();
             } else if (opcion == "recomendar") {
                 meGusta.recomendarSimilares(peliculas);
             } else if (opcion == "eliminar") {
-                cout << "¿De qué lista deseas eliminar? ('ver' para 'Ver más tarde', 'like' para 'Me gusta'): ";
+                cout << "¿De qué lista deseas eliminar? ('ver' para 'Ver más tarde' 👀, 'like' para 'Me gusta'❤️): ";
                 string lista;
                 cin >> lista;
                 if (lista == "ver") {
                     verMasTarde.eliminar();
+                    cout << "🗑️ Última película eliminada de 'Ver más tarde'.\n";
                 } else if (lista == "like") {
                     meGusta.eliminar();
+                    cout << "🗑️ Última película eliminada de 'Me gusta'.\n";
                 } else {
-                    cout << "❌ Opción inválida.\n";
+                    cout << " Opción inválida😒\n";
                 }
             } else if (opcion == "salir") {
                 break;
             } else {
-                cout << "❌ Opción inválida.\n";
+                cout << "Opción inválida😒\n";
             }
         }
     }
