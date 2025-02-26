@@ -3,20 +3,20 @@
 
 #include "ListaPila.h"
 #include "DataProcessor.h"
-#include "AlgoritmoSimlitud.h"
-#include "Subject.h"
+#include "SimilitudFactory.h"
+#include "subject.h"
 
 using namespace std;
 
 class Megusta : public subject {
 private:
     ListaPila<Pelicula> lista;
-    AlgoritmoSimilitud<Pelicula>* algoritmo;
+    unique_ptr<AlgoritmoSimilitud<Pelicula>> algoritmo;
 
 public:
-
-    explicit Megusta(AlgoritmoSimilitud<Pelicula>* estrategia) : algoritmo(estrategia) {}
-
+    explicit Megusta(TipoSimilitud tipoSimilitud) {
+        algoritmo = SimilitudFactory::crearSimilitud(tipoSimilitud);
+    }
 
     void agregar(const Pelicula& pelicula) {
         lista.agregar(pelicula, "Me gusta");
@@ -24,7 +24,6 @@ public:
     }
 
     void mostrar() const { lista.mostrar("Me gusta"); }
-
     void eliminar() { lista.eliminar("Me gusta"); }
 
     void recomendarSimilares(const vector<Pelicula>& todasLasPeliculas) {
@@ -36,15 +35,15 @@ public:
         cout << "\n  Películas recomendadas basadas en tus 'Me gusta':\n";
         Pelicula ultimaPelicula = lista.obtenerUltima();
 
-
         if (algoritmo) {
             vector<Pelicula> recomendaciones = algoritmo->encontrarSimilares(ultimaPelicula, todasLasPeliculas);
 
             if (recomendaciones.empty()) {
                 cout << "No se encontraron películas similares \n";
             } else {
-                for (const auto& pelicula : recomendaciones) {
-                    cout << "pelicula " << pelicula.titulo << "\n";
+                size_t maxRecomendaciones = min(recomendaciones.size(), size_t(5));
+                for (size_t i = 0; i < maxRecomendaciones; ++i) {
+                    cout << "🎬 " << recomendaciones[i].titulo << "\n";
                 }
             }
         } else {

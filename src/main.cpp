@@ -10,8 +10,8 @@
 using namespace std;
 
 int main() {
-    string rutaCSV = "C:\\Streaming-Platform\\data\\movies.csv";
-    string rutaJSON = "C:\\Streaming-Platform\\data\\movies.json";
+    string rutaCSV = "/Users/ashlyveliz/Documents/PROYECTOS/Streaming-Platform/data/movies.csv";
+    string rutaJSON = "/Users/ashlyveliz/Documents/PROYECTOS/Streaming-Platform/data/movies.json";
 
     // Cargar películas en un vector desde JSON o CSV
     vector<Pelicula> peliculas = DataProcessor::getInstance().cargarPeliculasDesdeCSV(rutaCSV, rutaJSON);
@@ -27,10 +27,11 @@ int main() {
 
     // Estrategia de similitud basada en tags
     SimilitudPorTags estrategiaSimilitud;
-    Megusta meGusta(&estrategiaSimilitud);
+    Megusta meGusta(TipoSimilitud::TAGS);
 
-    // 🔥 Crear recomendador y suscribirlo a "Me gusta"
-    recomendador recomendador(&estrategiaSimilitud, peliculas);
+
+    //Crear recomendador y suscribirlo a "Me gusta"
+    Recomendador recomendador(&estrategiaSimilitud, peliculas);
     meGusta.agregarObservador(&recomendador);
 
     // Insertar las películas en los árboles
