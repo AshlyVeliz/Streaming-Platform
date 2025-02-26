@@ -115,5 +115,13 @@ El proyecto utiliza programación paralela para optimizar la carga y procesamien
     ```sh
     ./bin/StreamingPlatform
 ---
+---
+### Extra: Desarrollo del Frontend y Conexión con el Backend
+
+Hemos desarrollado el frontend del proyecto como un esfuerzo adicional, implementándolo en TypeScript con la estructura necesaria para interactuar con el backend. Sin embargo, aún no hemos logrado establecer correctamente la conexión entre ambos. Nos enfocamos en diseñar la interfaz y los servicios de comunicación, pero faltan algunos detalles para que la integración funcione completamente.
+
+El código del frontend está disponible en nuestro repositorio, y aunque no es parte del requerimiento principal, decidimos trabajarlo como un extra para complementar el sistema. Reconocemos que quedan ajustes pendientes para lograr una interacción fluida con el backend, y estamos en proceso de solucionar estos detalles.
+
+---
 # Conclusión
 Este proyecto implementa una plataforma de streaming con estructuras de datos eficientes y patrones de diseño modernos. La integración de AVL Trees y búsquedas optimizadas permite resultados rápidos y precisos. Además, el sistema de recomendaciones personalizadas mejora la experiencia del usuario al sugerir contenido relevante basado en sus gustos.
