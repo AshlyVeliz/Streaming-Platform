@@ -16,6 +16,9 @@ add_executable(Streaming_Platform
         src/AlgoritmoSimlitud.h
         src/SimilitudTag.h
         src/SimilitudSinopsis.h
+        src/observer.h
+        src/subject.h
+        src/recomendador.h
 )
 
 

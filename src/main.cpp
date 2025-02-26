@@ -5,6 +5,7 @@
 #include "Ver_masTarde.h"
 #include "Megusta.h"
 #include "SimilitudTag.h"
+#include "recomendador.h"
 
 using namespace std;
 
@@ -13,7 +14,7 @@ int main() {
     string rutaJSON = "C:\\Streaming-Platform\\data\\movies.json";
 
     // Cargar películas en un vector desde JSON o CSV
-    vector<Pelicula> peliculas = DataProcessor::cargarPeliculasDesdeCSV(rutaCSV, rutaJSON);
+    vector<Pelicula> peliculas = DataProcessor::getInstance().cargarPeliculasDesdeCSV(rutaCSV, rutaJSON);
 
     if (peliculas.empty()) {
         cout << "🚨 No se cargaron películas. Revisa el archivo .CSV o .JSON 🚨" << endl;
@@ -24,9 +25,13 @@ int main() {
     SearchTree searchTree;
     Ver_masTarde verMasTarde;
 
-    // Similitud basada en tags
+    // Estrategia de similitud basada en tags
     SimilitudPorTags estrategiaSimilitud;
     Megusta meGusta(&estrategiaSimilitud);
+
+    // 🔥 Crear recomendador y suscribirlo a "Me gusta"
+    recomendador recomendador(&estrategiaSimilitud, peliculas);
+    meGusta.agregarObservador(&recomendador);
 
     // Insertar las películas en los árboles
     for (const auto& pelicula : peliculas) {
@@ -36,7 +41,7 @@ int main() {
         searchTree.insertar(pelicula);
     }
 
-    cout << "🎉Bienvenido a CINEFLIX (movie discovery system) 🎬🍿" << endl;
+    cout << "🎉 Bienvenido a CINEFLIX (movie discovery system) 🎬🍿" << endl;
 
     while (true) {
         string opcionBusqueda;
@@ -108,21 +113,27 @@ int main() {
                 cout << "Ingrese el número de la película para agregar a 'Ver más tarde': ";
                 int num;
                 cin >> num;
-                if (num >= 1 && num <= (int)resultados.size()) {
+
+                if (cin.fail() || num < 1 || num > (int)resultados.size()) {
+                    cout << "Número inválido 😒\n";
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                } else {
                     verMasTarde.agregar(resultados[num - 1]);
                     cout << "✔︎ Agregada a 'Ver más tarde'.\n";
-                } else {
-                    cout << "Número inválido😒\n";
                 }
             } else if (opcion == "like") {
                 cout << "Ingrese el número de la película para agregar a 'Me gusta': ";
                 int num;
                 cin >> num;
-                if (num >= 1 && num <= (int)resultados.size()) {
-                    meGusta.agregar(resultados[num - 1]);
-                    cout << "❤️Agregada a 'Me gusta'.\n";
+
+                if (cin.fail() || num < 1 || num > (int)resultados.size()) {
+                    cout << "Número inválido 😒\n";
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 } else {
-                    cout << "Número inválido😒\n";
+                    meGusta.agregar(resultados[num - 1]);
+                    cout << "❤️ Agregada a 'Me gusta'.\n";
                 }
             } else if (opcion == "ver") {
                 cout << "\n📂Lista 'Ver más tarde':\n";
@@ -135,6 +146,7 @@ int main() {
                 cout << "¿De qué lista deseas eliminar? ('ver' para 'Ver más tarde' 👀, 'like' para 'Me gusta'❤️): ";
                 string lista;
                 cin >> lista;
+
                 if (lista == "ver") {
                     verMasTarde.eliminar();
                     cout << "🗑️ Última película eliminada de 'Ver más tarde'.\n";
@@ -142,7 +154,7 @@ int main() {
                     meGusta.eliminar();
                     cout << "🗑️ Última película eliminada de 'Me gusta'.\n";
                 } else {
-                    cout << " Opción inválida😒\n";
+                    cout << "Opción inválida😒\n";
                 }
             } else if (opcion == "salir") {
                 break;

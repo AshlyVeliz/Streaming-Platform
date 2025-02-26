@@ -6,7 +6,6 @@
 #include <string>
 #include <sstream>
 #include <fstream>
-#include <thread>
 #include <mutex>
 #include "../include/json.hpp"
 
@@ -26,12 +25,16 @@ struct Pelicula {
 
 class DataProcessor {
 public:
-    static vector<Pelicula> cargarPeliculasDesdeCSV(const string& rutaCSV, const string& rutaJSON);
-    static vector<Pelicula> cargarPeliculasDesdeJSON(const string& rutaJSON);
-    static void guardarJSON(const vector<Pelicula>& peliculas, const string& rutaJSON);
+    static DataProcessor& getInstance();
+
+    vector<Pelicula> cargarPeliculasDesdeCSV(const string& rutaCSV, const string& rutaJSON);
+    vector<Pelicula> cargarPeliculasDesdeJSON(const string& rutaJSON);
+    void guardarJSON(const vector<Pelicula>& peliculas, const string& rutaJSON);
 
 private:
-    static void procesarLinea(const string& linea, vector<Pelicula>& peliculas, mutex& m);
+    DataProcessor() = default;
+    DataProcessor(const DataProcessor&) = delete;
+    DataProcessor& operator=(const DataProcessor&) = delete;
 };
 
 #endif // DATA_PROCESSOR_H
