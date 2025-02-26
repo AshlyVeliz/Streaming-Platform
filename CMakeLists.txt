@@ -19,6 +19,7 @@ add_executable(Streaming_Platform
         src/observer.h
         src/subject.h
         src/recomendador.h
+        src/SimilitudFactory.h
 )
 
 

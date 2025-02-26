@@ -30,3 +30,13 @@
 *.exe
 *.out
 *.app
+
+# Ignorar directorios de compilación
+cmake-build-debug/
+cmake-build-release/
+*.o
+*.log
+*.ninja
+*.cmake
+CMakeFiles/
+CMakeCache.txt
