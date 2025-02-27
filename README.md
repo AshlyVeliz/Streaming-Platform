@@ -125,3 +125,7 @@ El código del frontend está disponible en nuestro repositorio, y aunque no es 
 ---
 # Conclusión
 Este proyecto implementa una plataforma de streaming con estructuras de datos eficientes y patrones de diseño modernos. La integración de AVL Trees y búsquedas optimizadas permite resultados rápidos y precisos. Además, el sistema de recomendaciones personalizadas mejora la experiencia del usuario al sugerir contenido relevante basado en sus gustos.
+---
+#link del video:
+https://youtu.be/rmYmTs4jIDE
+
